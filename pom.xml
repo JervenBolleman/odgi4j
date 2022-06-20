@@ -24,4 +24,48 @@
 			<version>4.13.2</version>
 		</dependency>
 	</dependencies>
+    <build>   
+     <plugins>
+       <plugin>
+         <groupId>org.codehaus.mojo</groupId>
+         <artifactId>native-maven-plugin</artifactId>
+         <extensions>true</extensions>
+         <version>1.0-alpha-11</version>
+<configuration>
+<sources>
+            <source>
+              <!-- path to the C/C++ sources --> 
+              <directory>src/main/native/</directory>
+              <fileNames>
+                <fileName>jni_odgi.c</fileName>
+              </fileNames>
+            </source>
+            <!-- in this example - path to generated JNI header -->  
+            <source>
+              <directory>src/main/native/include</directory>
+            </source>
+          </sources>
+          <compilerStartOptions>
+            <compilerStartOption>-I</compilerStartOption>  
+            <compilerStartOption>/usr/include/c++/11/</compilerStartOption>  
+            <compilerStartOption>-I</compilerStartOption>  
+            <compilerStartOption>/usr/include/c++/11/x86_64-redhat-linux/</compilerStartOption>  
+            <compilerStartOption>-I</compilerStartOption>  
+            <compilerStartOption>../odgi/src/</compilerStartOption>  
+          </compilerStartOptions>
+</configuration>
+<executions>
+          <execution>
+            <id>javah</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>initialize</goal>
+              <goal>compile</goal>
+              <goal>link</goal>
+            </goals>
+          </execution>
+        </executions>
+       </plugin>
+     </plugins>
+   </build>
 </project>

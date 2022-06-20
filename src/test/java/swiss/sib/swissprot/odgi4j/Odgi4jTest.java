@@ -8,6 +8,6 @@ public class Odgi4jTest {
 
 	@Test
 	public void testVersionNotNull() {
-		assertNotNull(new Odgi4j().odgi_version());
+		assertNotNull(new Odgi4j()._Z19_long_long_sizev());
 	}
 }
