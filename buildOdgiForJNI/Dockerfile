@@ -29,5 +29,5 @@ FROM checkout AS build
 
 # Build them statically
 ENV CFLAGS "-fpic"
-RUN cd /jemalloc && ./autogen.sh --prefix=/usr/local --disable-initial-exec-tls --disable-libdl && make build_lib_static && make install_lib_static
+RUN cd /jemalloc && ./autogen.sh && ./configure --prefix=/usr/local --disable-initial-exec-tls --disable-libdl && make build_lib_static && make install_lib_static
 RUN cd /odgi && cmake -DBUILD_STATIC=1 -H. -Bbuild && cmake --build build -- -j 3
