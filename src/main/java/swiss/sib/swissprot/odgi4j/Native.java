@@ -4,20 +4,25 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.UnsatisfiedLinkError;
 
-/** Code under 3 Clause BSD at 
+/**
+ * Code under 3 Clause BSD at
  * https://github.com/luben/zstd-jni/blob/master/LICENSE
- * **/
-public enum Native {
-	;
+ **/
+public class Native {
 
-	private static final String nativePathOverride = "OdgiNativePath";
-	private static final String libnameShort = "odgi";
-	private static final String libname = "lib" + libnameShort;
-	private static final String errorMsg = "Unsupported OS/arch, cannot find " + resourceName() + " or load "
-			+ libnameShort + " from system libraries. Please " + "try building from source the jar or providing "
-			+ libname + " in your system.";
+	private final String nativePathOverride = "NativePath";
+	private final String libnameShort;
+	private final String libname;
+	private final String errorMsg;
+
+	public Native(String libnameShort) {
+		this.libnameShort = libnameShort;
+		this.libname = "lib" + libnameShort;
+		this.errorMsg = "Unsupported OS/arch, cannot find " + resourceName(libname) + " or load " + libnameShort
+				+ " from system libraries. Please " + "try building from source the jar or providing " + libname
+				+ " in your system.";
+	}
 
 	private static String osName() {
 		String os = System.getProperty("os.name").toLowerCase().replace(' ', '_');
@@ -44,25 +49,25 @@ public enum Native {
 		}
 	}
 
-	private static String resourceName() {
+	private static String resourceName(String libname) {
 		return "/" + osName() + "/" + osArch() + "/" + libname + "." + libExtension();
 	}
 
-	private static boolean loaded = false;
+	private boolean loaded = false;
 
-	public static synchronized boolean isLoaded() {
+	public synchronized boolean isLoaded() {
 		return loaded;
 	}
 
-	public static synchronized void load() {
+	public synchronized void load() {
 		load(null);
 	}
 
-	public static synchronized void load(final File tempFolder) {
+	public synchronized void load(final File tempFolder) {
 		if (loaded) {
 			return;
 		}
-		String resourceName = resourceName();
+		String resourceName = resourceName(libname);
 
 		String overridePath = System.getProperty(nativePathOverride);
 		if (overridePath != null) {

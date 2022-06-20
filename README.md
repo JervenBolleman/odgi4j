@@ -15,5 +15,6 @@ podman run -it b13969596ce1
 podman container list
 # use the container id in my case b13969596ce1
 podman cp 372718eff1f1:/odgi/lib/libodgi.so ../src/main/resources/linux/amd64/libodgi.so
+podman cp 372718eff1f1:/jemalloc/lib/libjemalloc.so ../src/main/resources/linux/amd64/libjemalloc.so
 # then kill the container again.
 ```

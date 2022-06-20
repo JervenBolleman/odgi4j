@@ -2,7 +2,8 @@ package swiss.sib.swissprot.odgi4j;
 
 public class Odgi4j {
 	static {
-		Native.load();
+		new Native("jemalloc").load();
+		new Native("odgi").load();
 	}
 
 	public native String odgi_version();
