@@ -1,14 +1,20 @@
 package swiss.sib.swissprot.odgi4j;
 
-public class Odgi4j {
-	static {
-		new Native("jemalloc").load();
-		new Native("odgi").load();
+import com.sun.jna.Library;
+import com.sun.jna.Native;
+import com.sun.jna.NativeLong;
+
+public interface Odgi4j extends Library {
+
+	public String odgi_version();
+	
+	public NativeLong odgi_long_long_size();
+	
+	public static Odgi4j instance() {
+		Native.load("jemalloc", Jemalloc.class);
+		
+		return Native.load("odgi", Odgi4j.class);
 	}
 
-	public native String odgi_version();
-	
-	public native long odgi_long_long_size();
-	
-	public native long _Z19_long_long_sizev();
+	public String divsufsort_version();
 }
