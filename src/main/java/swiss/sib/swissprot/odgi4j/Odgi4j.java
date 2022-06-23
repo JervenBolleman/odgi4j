@@ -9,6 +9,8 @@ public interface Odgi4j extends Library {
 
 	public Pointer odgi_c_version();
 	
+	public Pointer odgi_load_graph(String filePath); 
+	
 	public NativeLong odgi_long_long_size();
 	
 	public static Odgi4j instance() {
