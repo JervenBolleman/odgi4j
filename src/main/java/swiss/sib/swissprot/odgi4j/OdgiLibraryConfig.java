@@ -17,8 +17,6 @@ import org.bytedeco.javacpp.tools.InfoMapper;
 linkpath = "/home/jbollema/git/odgi/lib/",
 include = {
 						"/home/jbollema/git/odgi/deps/libhandlegraph/src/include/handlegraph/types.hpp",
-						"/home/jbollema/git/odgi/deps/libhandlegraph/src/include/handlegraph/iteratee.hpp",
-						"/home/jbollema/git/odgi/deps/libhandlegraph/src/include/handlegraph/util.hpp",
 						"/home/jbollema/git/odgi/deps/libhandlegraph/src/include/handlegraph/handle_graph.hpp",
 						"/home/jbollema/git/odgi/deps/libhandlegraph/src/include/handlegraph/path_handle_graph.hpp",
 						"/home/jbollema/git/odgi/deps/libhandlegraph/src/include/handlegraph/mutable_handle_graph.hpp",
@@ -28,12 +26,11 @@ include = {
 						"/home/jbollema/git/odgi/deps/libhandlegraph/src/include/handlegraph/mutable_path_deletable_handle_graph.hpp",
 						"/home/jbollema/git/odgi/deps/libhandlegraph/src/include/handlegraph/serializable.hpp",
 						"/home/jbollema/git/odgi/deps/libhandlegraph/src/include/handlegraph/serializable_handle_graph.hpp",
-						"/home/jbollema/git/odgi/deps/libhandlegraph/src/include/handlegraph/path_position_handle_graph.hpp",
-						"/home/jbollema/git/odgi/deps/libhandlegraph/src/include/handlegraph/trivially_serializable.hpp",
 						"/home/jbollema/git/odgi/src/dset64.hpp",
-						"/home/jbollema/git/odgi/src/node.hpp", "/home/jbollema/git/odgi/src/dna.hpp",
-//						"/home/jbollema/git/odgi/src/hash_map.hpp", "/home/jbollema/git/odgi/src/dynamic_structs.hpp",
-						"/home/jbollema/git/odgi/src/dynamic_types.hpp", "/home/jbollema/git/odgi/src/odgi.hpp",
+						"/home/jbollema/git/odgi/src/node.hpp", 
+						"/home/jbollema/git/odgi/src/dna.hpp",
+						"/home/jbollema/git/odgi/src/dynamic_types.hpp", 
+						"/home/jbollema/git/odgi/src/odgi.hpp",
 						"/home/jbollema/git/odgi/src/odgi-api.h", }
 
 		, preload = { "jemalloc" }), target = "swiss.sib.swissprot.odgi4j.OdgiLibrary")
